@@ -1,0 +1,20 @@
+name: Check for new versions and update Tasker APKs
+on:
+    schedule:
+        - cron: "0 0 * * *" # daily
+    workflow_dispatch: # allow manual triggering of the action
+
+# permissions:
+#     contents: write
+#     pages: write
+#     id-token: write
+
+jobs:
+    test_job:
+        name: a test job
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "hi bitch"
+
+              
+    
