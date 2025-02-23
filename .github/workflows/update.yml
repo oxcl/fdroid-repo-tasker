@@ -14,7 +14,7 @@ jobs:
         name: a test job
         runs-on: ubuntu-latest
         steps:
-            - run: echo "hi bitch"
+            - run: echo "hi byatch"
 
               
     
