@@ -1,0 +1,51 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get commit message
+        id: commit
+        run: |
+          MESSAGE=$(git log -1 --pretty=%B)
+          echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
+
+      - name: Check if commit is APK update
+        id: check_commit
+        run: |
+          if [[ "${{ env.MESSAGE }}" =~ ^Update\ APK\ to\ version\ ([^ ]+)\ \(([0-9]+)\)$ ]]; then
+            VERSION_NAME=${BASH_REMATCH[1]}
+            VERSION_CODE=${BASH_REMATCH[2]}
+            echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+            echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
+            echo "proceed=true" >> $GITHUB_OUTPUT
+          else
+            echo "proceed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Find APK file
+        if: steps.check_commit.outputs.proceed == 'true'
+        run: |
+          APK_FILE=$(ls fdroid/repo/*_${VERSION_CODE}.apk)
+          echo "APK_FILE=$APK_FILE" >> $GITHUB_ENV
+
+      - name: Create release
+        if: steps.check_commit.outputs.proceed == 'true'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{env.VERSION_NAME}}
+          release_name: Release ${{env.VERSION_NAME}} (${{env.VERSION_CODE}})
+          draft: false
+          prerelease: false
+permissions:
+  contents: write

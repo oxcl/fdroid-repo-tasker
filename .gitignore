@@ -1,5 +1,5 @@
-keystore.p12
-config.yml
-fdroid/tmp
-fdroid/repo/status
-fdroid/metadata/**/phoneScreenshots
+*/fdroid/keystore.p12
+*/fdroid/config.yml
+*/fdroid/tmp/
+*/fdroid/repo/status
+*/fdroid/metadata/**/phoneScreenshots
