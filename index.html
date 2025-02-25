@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F-Droid Repositories</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .repo {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 45%;
+      text-align: center;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .repo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .repo h2 {
+      color: #2980b9;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .repo p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .repo img {
+      width: 200px;
+      height: 200px;
+      margin: 1rem 0;
+    }
+
+    .repo a {
+      display: inline-block;
+      background-color: #3498db;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .repo a:hover {
+      background-color: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .repo {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>F-Droid Repositories</h1>
+  </header>
+  <main>
+    <!-- Repository 1 -->
+    <section class="repo">
+      <h2>Repository 1 Name</h2>
+      <p>Description of Repository 1.</p>
+      <img src="qr_code1.png" alt="QR Code for Repository 1">
+      <a href="repository_link1" title="Add Repository 1 to F-Droid">Add to F-Droid</a>
+    </section>
+    <!-- Repository 2 -->
+    <section class="repo">
+      <h2>Repository 2 Name</h2>
+      <p>Description of Repository 2.</p>
+      <img src="qr_code2.png" alt="QR Code for Repository 2">
+      <a href="repository_link2" title="Add Repository 2 to F-Droid">Add to F-Droid</a>
+    </section>
+  </main>
+  <footer>
+    <p>Made by <a href="https://github.com/yourprofile">Your Name</a></p>
+    <p><a href="https://github.com/yourrepo">GitHub Repository</a></p>
+  </footer>
+</body>
+
+</html>
