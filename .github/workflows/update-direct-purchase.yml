@@ -19,54 +19,41 @@ jobs:
 
       - name: Calculate Hash of Downloaded APK
         id: hash_downloaded
-        run: echo "DOWNLOADED_HASH=$(sha256sum downloaded.apk | awk '{print $1}')" >> $GITHUB_ENV
+        run: echo "DOWNLOADED_HASH=$(sha256sum downloaded.apk | awk '{print $1}' | xargs)" >> $GITHUB_ENV
 
-      - name: Check if direct_purchase_hash.txt exists
-        id: check_hash_file
-        run: |
-          if [ -f direct_purchase_hash.txt ]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Read existing hash
-        if: steps.check_hash_file.outputs.exists == 'true'
-        id: read_hash
-        run: echo "EXISTING_HASH=$(cat direct_purchase_hash.txt)" >> $GITHUB_ENV
-
-      - name: Comespare hashes
+      - name: Compare hashes
         id: compare_hash
         run: |
-          if [ "${{ steps.check_hash_file.outputs.exists }}" == "true" ] && [ "${{ env.DOWNLOADED_HASH }}" == "${{ env.EXISTING_HASH }}" ]; then
-            echo "same=true" >> $GITHUB_OUTPUT
-          else
+          if ! [ -f direct_purchase_hash.txt ]; then
             echo "same=false" >> $GITHUB_OUTPUT
+          elif ! [ "${{ env.DOWNLOADED_HASH }}" == "$(cat direct_purchase_hash.txt | xargs)" ]
+            echo "same=false" >> $GITHUB_OUTPUT
+          else
+            echo "same=true" >> $GITHUB_OUTPUT
           fi
-
       - name: Set up Android SDK
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         uses: android-actions/setup-android@v2
         with:
           packages: 'build-tools;30.0.3'
 
       - name: Install aapt
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: sudo apt install aapt -y
       
 
       - name: Set up Python
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
       - name: Install fdroidserver
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: pip install fdroidserver
 
       - name: Extract package name and version code
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: |
           PACKAGE_NAME=$(aapt dump badging downloaded.apk | grep package | awk '{print $2}' | sed "s/name='//g" | sed "s/'//g")
           VERSION_CODE=$(aapt dump badging downloaded.apk | grep package | awk '{print $3}' | sed "s/versionCode='//g" | sed "s/'//g")
@@ -76,13 +63,13 @@ jobs:
           echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
 
       - name: Copy APK to repo directory
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: |
           FILENAME="${PACKAGE_NAME}_${VERSION_CODE}.apk"
           cp downloaded.apk "direct-purchase/fdroid/repo/$FILENAME"
 
       - name: Run fdroid update
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: |
           cd direct-purchase/fdroid
           echo "${{ secrets.CONFIG }}" | base64 -d > config.yml
@@ -90,21 +77,24 @@ jobs:
           fdroid update -c
 
       - name: Update direct_purchase_hash.txt
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: echo "${{ env.DOWNLOADED_HASH }}" > direct_purchase_hash.txt
 
       - name: Update README
-        if: steps.check_apk.outputs.exists != 'true'
+        if: steps.compare_hash.outputs.exists != 'true'
         run: |
-          FILENAME="${PACKAGE_NAME}_${VERSION_CODE}.apk"
-          DOWNLOAD_LINK="https://github.com/${{ github.repository }}/raw/main/direct-purchase/fdroid/repo/$FILENAME"
+          cat README_template.md | \
+          sed "s/%PACKAGE_NAME%/${PACKAGE_NAME}/g" | \
+          sed "s/%VERSION_CODE%/${VERSION_CODE}/g" | \
+          sed "s/%VERSION_NAME%/${VERSION_NAME}/g" | \
+          sed "s/%UPDATE_DATE%/$(date)/g" > README.md
       
       - name: Commit and push changes
-        if: steps.compare_hashes.outputs.same != 'true'
+        if: steps.compare_hash.outputs.same != 'true'
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add direct-purchase/fdroid/ direct_purchase_hash.txt
+          git add direct-purchase/fdroid/ direct_purchase_hash.txt README.md
           git commit -m "Update APK to version $VERSION_NAME ($VERSION_CODE)"
           git push
         env:

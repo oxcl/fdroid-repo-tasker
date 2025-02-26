@@ -25,11 +25,10 @@ you can also scan the **QR Code**:
 </center>
 
 ### Details
-<!-- LATEST_VERSION_START -->
-- Version Name: %APP_NAME%
-- Version Code: %APP_CODE%
-- Last Update: %APP_DATE%
-<!-- LATEST_VERSION_END -->
+- Package Name: %PACKAGE_NAME%
+- Version: %VERSION_NAME%
+- Version Code: %VERSION_CODE%
+- Last Update: %UPDATE_DATE%
 
 ## Google Play Version
 You can also [buy Tasker from Google Play Store](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en).
