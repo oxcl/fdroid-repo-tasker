@@ -21,9 +21,9 @@ jobs:
       - name: Check if commit is APK update
         id: check_commit
         run: |
-          if [[ "${{ env.MESSAGE }}" =~ ^Update\ APK\ to\ version\ ([^ ]+)\ \(([0-9]+)\)$ ]]; then
-            VERSION_NAME=${BASH_REMATCH[1]}
-            VERSION_CODE=${BASH_REMATCH[2]}
+          if [[ "${{ env.MESSAGE }}" == *"NEW_UPDATE"* ]]; then
+            VERSION_NAME=$(echo "${{ env.MESSAGE}}" | grep -o -P '\[.*\]' | tr -d '[' | tr -d ']' )
+            VERSION_CODE=$(echo "${{ env.MESSAGE}}" | grep -o -P '\(.*\)' | tr -d '(' | tr -d ')' )
             echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
             echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
             echo "proceed=true" >> $GITHUB_OUTPUT

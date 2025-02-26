@@ -95,7 +95,7 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add direct-purchase/fdroid/ direct_purchase_hash.txt README.md
-          git commit -m "Update APK to version $VERSION_NAME ($VERSION_CODE)"
+          git commit -m "NEW_UPDATE: Update APK to version [$VERSION_NAME] ($VERSION_CODE)"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
