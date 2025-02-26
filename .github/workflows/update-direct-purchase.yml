@@ -26,7 +26,7 @@ jobs:
         run: |
           if ! [ -f direct_purchase_hash.txt ]; then
             echo "same=false" >> $GITHUB_OUTPUT
-          elif ! [ "${{ env.DOWNLOADED_HASH }}" == "$(cat direct_purchase_hash.txt | xargs)" ]
+          elif ! [ "${{ env.DOWNLOADED_HASH }}" == "$(cat direct_purchase_hash.txt | xargs)" ]; then
             echo "same=false" >> $GITHUB_OUTPUT
           else
             echo "same=true" >> $GITHUB_OUTPUT
