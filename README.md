@@ -13,6 +13,8 @@ Unofficial F-Droid repository for the direct-purchase version of the Tasker app 
 The direct-purchase version does not rely on Google Play Store and can be activated using a licence key. you can buy a license from [here](https://taskernet.com/?licenses).
 
 To add it to F-Droid simply click on [this link](https://raw.githubusercontent.com/oxcl/fdroid-repo-tasker/refs/heads/main/direct-purchase/fdroid/repo?fingerprint=363c64a0fda31fa5b1facebdda0a592d700918bb9b8bfb6a31d94c6dbc03956e).
+> [!NOTE]
+> the link should take you directly to the F-Droid app. if that didn't happen and you saw a 404: not found error, simply copy the link and add it to F-Droid using the interface or scan the QR Code.
 
 or manually add the repo by copying the link below and adding it as an F-Droid repo.
 ```
