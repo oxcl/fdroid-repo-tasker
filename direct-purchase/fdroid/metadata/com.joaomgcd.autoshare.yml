@@ -1,9 +1,10 @@
-AuthorName: ''
+AuthorName: 'joaomgcd'
 Categories:
-- fdroid
+- Development
 CurrentVersionCode: 2147483647
 IssueTracker: ''
 Name: AutoShare
 SourceCode: ''
 Summary: ''
-WebSite: ''
+WebSite: 'https://joaoapps.com/autoshare'
+Description: Share content between apps, devices, and the web with Tasker integration and advanced sharing options for automation.

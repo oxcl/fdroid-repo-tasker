@@ -1,9 +1,10 @@
-AuthorName: ''
+AuthorName: 'joaomgcd'
 Categories:
-- fdroid
+- Development
 CurrentVersionCode: 2147483647
 IssueTracker: ''
 Name: AutoTools
 SourceCode: ''
 Summary: ''
-WebSite: ''
+WebSite: 'https://joaoapps.com/autotools'
+Description: A powerful suite of tools and plugins for Tasker, enabling advanced automation with UI customization, file management, and more.

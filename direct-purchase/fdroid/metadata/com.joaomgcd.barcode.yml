@@ -1,9 +1,10 @@
-AuthorName: ''
+AuthorName: 'joaomgcd'
 Categories:
-- fdroid
+- Development
 CurrentVersionCode: 2147483647
 IssueTracker: ''
 Name: AutoBarcode
 SourceCode: ''
 Summary: ''
-WebSite: ''
+WebSite: 'https://joaoapps.com/autobarcode/examples'
+Description: Scan, create, and manage barcodes and QR codes with Tasker integration for seamless automation.

@@ -1,9 +1,10 @@
-AuthorName: ''
+AuthorName: 'joaomgcd'
 Categories:
-- fdroid
+- Development
 CurrentVersionCode: 2147483647
 IssueTracker: ''
 Name: AutoInput
 SourceCode: ''
 Summary: ''
-WebSite: ''
+WebSite: 'https://joaoapps.com/autoinput'
+Description: Automate your device's user interface with Tasker integration, enabling clicks, swipes, text input, and more for seamless automation.

@@ -1,9 +1,10 @@
-AuthorName: ''
+AuthorName: 'joaomgcd'
 Categories:
-- fdroid
+- Development
 CurrentVersionCode: 2147483647
 IssueTracker: ''
 Name: AutoNotification
 SourceCode: ''
 Summary: ''
-WebSite: ''
+WebSite: 'https://joaoapps.com/autonotification'
+Description: Create, intercept, and customize Android notifications with advanced buttons, replies, and triggers for powerful Tasker automation.
