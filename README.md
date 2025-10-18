@@ -12,7 +12,9 @@ Unofficial F-Droid repository for the direct-purchase version of the Tasker app 
 ## Direct Purchase Version
 The direct-purchase version does not rely on Google Play Store and can be activated using a licence key. you can buy a license from [here](https://taskernet.com/?licenses).
 
-To add it to F-Droid simply copy the link below and add it as a repository in F-Droid (Settings > Repositories)
+To add it to F-Droid simply click on [this link](https://raw.githubusercontent.com/oxcl/fdroid-repo-tasker/refs/heads/main/direct-purchase/fdroid/repo?fingerprint=363c64a0fda31fa5b1facebdda0a592d700918bb9b8bfb6a31d94c6dbc03956e).
+
+or manually add the repo by copying the link below and adding it as an F-Droid repo.
 ```
 https://raw.githubusercontent.com/oxcl/fdroid-repo-tasker/refs/heads/main/direct-purchase/fdroid/repo?fingerprint=363c64a0fda31fa5b1facebdda0a592d700918bb9b8bfb6a31d94c6dbc03956e
 ```
@@ -24,9 +26,9 @@ you can also scan the **QR Code**:
 
 ### Details
 - Package Name: net.dinglisch.android.taskerm
-- Version: 6.6.3-beta
-- Version Code: 5428
-- Last Update: Fri Aug 22 09:33:25 UTC 2025
+- Version: 6.6.7-beta
+- Version Code: 5432
+- Last Update: Sat Oct 18 00:51:13 UTC 2025
 
 ## Google Play Version
 You can also [buy Tasker from Google Play Store](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en).
