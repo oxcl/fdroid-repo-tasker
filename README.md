@@ -28,7 +28,7 @@ you can also scan the **QR Code**:
 - Package Name: net.dinglisch.android.taskerm
 - Version: 6.6.17-rc
 - Version Code: 5442
-- Last Update: Wed Nov 26 00:58:40 UTC 2025
+- Last Update: Thu Nov 27 00:57:28 UTC 2025
 
 ## Google Play Version
 You can also [buy Tasker from Google Play Store](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en).
