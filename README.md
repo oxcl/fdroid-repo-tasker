@@ -19,6 +19,13 @@ or manually add the repo by copying the link below and adding it as an F-Droid r
 https://raw.githubusercontent.com/oxcl/fdroid-repo-tasker/refs/heads/main/direct-purchase/fdroid/repo?fingerprint=363c64a0fda31fa5b1facebdda0a592d700918bb9b8bfb6a31d94c6dbc03956e
 ```
 
+## Obtainium
+1. Copy the link: `https://raw.githubusercontent.com/oxcl/fdroid-repo-tasker/refs/heads/main/direct-purchase/fdroid/repo?fingerprint=363c64a0fda31fa5b1facebdda0a592d700918bb9b8bfb6a31d94c6dbc03956e`
+2. Under Override source, choose F-Droid third-party repo.
+3. Under App ID or name, input net.dinglisch.android.taskerm for Tasker.
+4. Make adjustments to other settings as necessary.
+
+
 you can also scan the **QR Code**:
 <center>
 <img src="direct-purchase/fdroid/repo/index.png" alt="QR Code for the direct-purchase repo. Scan it with the F-Droid app" width="300"/>
@@ -28,7 +35,7 @@ you can also scan the **QR Code**:
 - Package Name: net.dinglisch.android.taskerm
 - Version: 6.6.17-rc
 - Version Code: 5442
-- Last Update: Thu Nov 27 00:57:28 UTC 2025
+- Last Update: Thu Dec  4 00:59:34 UTC 2025
 
 ## Google Play Version
 You can also [buy Tasker from Google Play Store](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en).
