@@ -31,11 +31,6 @@ jobs:
           else
             echo "same=true" >> $GITHUB_OUTPUT
           fi
-      - name: Set up Android SDK
-        if: steps.compare_hash.outputs.same != 'true'
-        uses: android-actions/setup-android@v2
-        with:
-          packages: 'build-tools;30.0.3'
 
       - name: Install aapt
         if: steps.compare_hash.outputs.same != 'true'
